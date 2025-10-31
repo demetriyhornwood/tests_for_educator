@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:  
+  postgres1:  
+    image: postgres
+    environment:  
+      POSTGRES_USER: user  
+      POSTGRES_PASSWORD: red1
+      
+   
+    
+
+  postgres2:  
+    image: postgres
+    environment: 
+      POSTGRES_USER: user  
+      POSTGRES_PASSWORD: red2
