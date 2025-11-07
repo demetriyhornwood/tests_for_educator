@@ -1,17 +1,38 @@
 version: '3.8'
 
-services:  
-  postgres1:  
-    image: postgres
-    environment:  
-      POSTGRES_USER: user  
-      POSTGRES_PASSWORD: red1
-      
-   
-    
+services:
+  postgres1:
+    build:
+      context: .
+      dockerfile: dockerfile1
+    networks:
+      net1:
+        ipv4_address: 10.30.34.70
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./super_secret_pass.txt:/super_secret_pass.txt
 
-  postgres2:  
-    image: postgres
-    environment: 
-      POSTGRES_USER: user  
-      POSTGRES_PASSWORD: red2
+  postgres2:
+    build:
+      context: .
+      dockerfile: Dockerfile2
+    networks:
+      net2:
+        ipv4_address: 10.74.87.132
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./super_secret_pass.txt:/super_secret_pass.txt
+
+networks:
+  net1:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.30.34.0/24
+  net2:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.74.87.0/24
