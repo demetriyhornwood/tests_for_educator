@@ -1,7 +1,7 @@
 FROM postgres:latest
 
-ENV POSTGRES_DB=testdatabase
-ENV POSTGRES_USER=testuser
+ENV POSTGRES_DB=testdatabase1
+ENV POSTGRES_USER=testuser1
 
 
 COPY super_secret_pass.txt /super_secret_pass.txt
