@@ -2,15 +2,6 @@ FROM postgres:latest
 
 ENV POSTGRES_DB=testdatabase1
 ENV POSTGRES_USER=testuser1
-
-
-COPY super_secret_pass.txt /super_secret_pass.txt
-
-
-RUN chmod 755 /super_secret_pass.txt && \
-    export POSTGRES_PASSWORD=$(cat /super_secret_pass.txt)
-
-
-
+ENV POSTGRES_PASSWORD=111
 
 EXPOSE 5432
