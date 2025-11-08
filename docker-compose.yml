@@ -10,9 +10,7 @@ services:
         ipv4_address: 10.30.34.70
     ports:
       - "5432:5432"
-    volumes:
-      - ./super_secret_pass.txt:/super_secret_pass.txt
-
+    
   postgres2:
     build:
       context: .
@@ -22,9 +20,7 @@ services:
         ipv4_address: 10.74.87.132
     ports:
       - "5433:5432"
-    volumes:
-      - ./super_secret_pass.txt:/super_secret_pass.txt
-
+    
 networks:
   net1:
     driver: bridge
