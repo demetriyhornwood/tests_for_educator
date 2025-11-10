@@ -7,20 +7,48 @@ services:
       dockerfile: dockerfile1
     networks:
       net1:
-        ipv4_address: 10.30.34.70
+        ipv4_address: 10.30.34.71
     ports:
       - "5432:5432"
-    
+    environment:
+      POSTGRES_PASSWORD: 123
+
   postgres2:
     build:
       context: .
       dockerfile: Dockerfile2
     networks:
       net2:
-        ipv4_address: 10.74.87.132
+        ipv4_address: 10.74.87.133
     ports:
       - "5433:5432"
-    
+    environment:
+      POSTGRES_PASSWORD: 123
+
+  pgadmin1:
+    image: elestio/pgadmin:REL-9_6
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin1@tera.com
+      PGADMIN_DEFAULT_PASSWORD: 123
+    ports:
+      - "8081:80"
+    networks:
+      net1:
+        ipv4_address: 10.30.34.70
+
+  pgadmin2:
+    image: elestio/pgadmin:REL-9_6
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin2@tera.com
+      PGADMIN_DEFAULT_PASSWORD: 123
+    ports:
+      - "8082:80"
+    networks:
+       net2:
+        ipv4_address: 10.74.87.132
+
 networks:
   net1:
     driver: bridge
