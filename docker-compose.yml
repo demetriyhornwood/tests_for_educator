@@ -10,18 +10,25 @@ services:
         ipv4_address: 10.30.34.71
     ports:
       - "5432:5432"
+    volumes:
+      - postgres1:/var/lib/postgresql/18/docker
+      - ./pg_hba1/pg_hba.conf:/var/lib/postgresql/18/docker/pg_hba.conf
     environment:
       POSTGRES_PASSWORD: 123
 
   postgres2:
     build:
       context: .
-      dockerfile: Dockerfile2
+      dockerfile: dockerfile2
     networks:
       net2:
         ipv4_address: 10.74.87.133
     ports:
       - "5433:5432"
+    volumes:
+      - postgres2:/var/lib/postgresql/18/docker
+      - ./pg_hba2/pg_hba.conf:/var/lib/postgresql/18/docker/pg_hba.conf
+
     environment:
       POSTGRES_PASSWORD: 123
 
@@ -60,3 +67,8 @@ networks:
     ipam:
       config:
         - subnet: 10.74.87.0/24
+
+volumes:
+  postgres1: {}
+  postgres2: {}
+
