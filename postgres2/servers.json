@@ -1,0 +1,11 @@
+servers": {
+    "pgserv1": {
+      "Name": "PGS1",
+      "Group": "Servers",
+      "Port": 5433,
+      "Host": "10.144.1.45",
+      "Username": "testuser",
+      "Password": "123",
+      "Database": "testdatabase",
+      "SSLMode": "prefer"
+
