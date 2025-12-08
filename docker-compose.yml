@@ -26,7 +26,7 @@
     environment:
       PGADMIN_DEFAULT_EMAIL: admin1@tera.com
       PGADMIN_DEFAULT_PASSWORD: 123
-      PGADMIN_SERVER_JSON_FILE: /pgadmin4/postgres1/servers.json
+      PGADMIN_SERVER_JSON_FILE: /pgadmin4/servers.json
 
     ports:
       - "8081:80"
