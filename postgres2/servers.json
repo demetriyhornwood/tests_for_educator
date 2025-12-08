@@ -1,11 +1,24 @@
-servers": {
-    "pgserv1": {
-      "Name": "PGS1",
-      "Group": "Servers",
-      "Port": 5433,
-      "Host": "10.144.1.45",
-      "Username": "testuser",
-      "Password": "123",
-      "Database": "testdatabase",
-      "SSLMode": "prefer"
-
+{
+    "Servers": {
+        "1": {
+            "Name": "PGS2",
+            "Group": "Servers",
+            "Host": "10.144.1.45",
+            "Port": 5433,
+            "MaintenanceDB": "testdatabase",
+            "Username": "testuser",
+            "UseSSHTunnel": 0,
+            "TunnelPort": "22",
+            "TunnelAuthentication": 0,
+            "TunnelKeepAlive": 0,
+            "KerberosAuthentication": false,
+            "ConnectionParameters": {
+                "sslmode": "prefer",
+                "connect_timeout": 10,
+                "sslcert": "<STORAGE_DIR>/.postgresql/postgresql.crt",
+                "sslkey": "<STORAGE_DIR>/.postgresql/postgresql.key"
+            },
+            "Tags": []
+        }
+    }
+}
