@@ -1,16 +1,4 @@
-version: '3.8'
-
-services:
-  postgres1:
-    build:
-      context: .
-      dockerfile: dockerfile1
-    networks:
-      net1:
-        ipv4_address: 10.30.34.71
-    ports:
-      - "5432:5432"
-    volumes:
+ volumes:
       - postgres1:/var/lib/postgresql/18/docker
       - ./pg_hba1/pg_hba.conf:/var/lib/postgresql/18/docker/pg_hba.conf
     environment:
@@ -38,8 +26,12 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: admin1@tera.com
       PGADMIN_DEFAULT_PASSWORD: 123
+      PGADMIN_SERVER_JSON_FILE: /pgadmin4/postgres1/servers.json
+
     ports:
       - "8081:80"
+    volumes:
+      - ./postgres1/servers.json:/pgadmin4/servers.json
     networks:
       net1:
         ipv4_address: 10.30.34.70
@@ -50,8 +42,13 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: admin2@tera.com
       PGADMIN_DEFAULT_PASSWORD: 123
+      PGADMIN_SERVER_JSON_FILE: /pgadmin4/postgres/servers.json
+
     ports:
       - "8082:80"
+    volumes:
+      - ./postgres2/servers.json:/pgadmin4/servers.json
+
     networks:
        net2:
         ipv4_address: 10.74.87.132
@@ -71,4 +68,3 @@ networks:
 volumes:
   postgres1: {}
   postgres2: {}
-
